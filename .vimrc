@@ -60,9 +60,6 @@ let mapleader=";" "自定义前缀键
 " 设置nerdTree快捷键
 map <C-e> :NERDTreeToggle<CR>
 
-" 设置paste的快捷键
-map <leader>p :set paste<CR>
-
 
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
@@ -146,10 +143,25 @@ map <leader>n :call NumberToggle()<CR>
 func NumberToggle()
     if g:number_status == 1
         :set nonu
+        :GitGutterDisable
         let g:number_status = 0
     else
         :set nu
+        :GitGutterEnable
         let g:number_status = 1
+    endif
+endfunc
+
+" 设置paste的快捷键
+let g:paste_status = 0
+map <leader>p :call PasteToggle()<CR>
+func PasteToggle()
+    if g:paste_status == 1
+        :set nopaste
+        let g:paste_status = 0
+    else
+        :set paste
+        let g:paste_status = 1
     endif
 endfunc
 
