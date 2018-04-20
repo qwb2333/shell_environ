@@ -166,15 +166,22 @@ func PasteToggle()
 endfunc
 
 " 括号补全
-inoremap ( ()<ESC>i
+inoremap ( <c-r>=SeqMatch('(', ')')<CR>
 inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {}<ESC>i
+inoremap { <c-r>=SeqMatch('{', '}')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
+inoremap [ <c-r>=SeqMatch('[', ']')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
+inoremap " <c-r>=SeqMatch('"', '"')<CR>
+inoremap ' <c-r>=SeqMatch("'", "'")<CR>
 inoremap <CR> <c-r>=CROption()<CR>
+func! SeqMatch(u, v)
+    if g:paste_status == 1
+        return a:u
+    else
+        return printf("%s%s\<Left>", a:u, a:v)
+    endif
+endfunc
 func! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
@@ -184,7 +191,9 @@ func! ClosePair(char)
 endfunc
 
 func CROption()
-    if &filetype != 'c'&& &filetype != 'cpp' && &filetype != 'h' && &filetype != 'cc'
+    if g:paste_status == 1
+        return "\<CR>"
+    elseif &filetype != 'c'&& &filetype != 'cpp' && &filetype != 'h' && &filetype != 'cc'
         return "\<CR>"
     endif
 
