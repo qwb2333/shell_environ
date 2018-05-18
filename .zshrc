@@ -64,6 +64,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+if [ -f $HOME/.userrc ]; then
+    source $HOME/.userrc
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
