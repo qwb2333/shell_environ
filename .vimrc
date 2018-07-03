@@ -50,6 +50,7 @@ Plugin 'scrooloose/nerdcommenter' " leader+cc注释,leader+cu解除
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
 
 
@@ -225,3 +226,5 @@ let g:airline_powerline_fonts = 1
  " 关闭状态显示空白符号计数,这个对我用处不大"
  let g:airline#extensions#whitespace#enabled = 0
  let g:airline#extensions#whitespace#symbol = '!'
+
+ colorscheme solarized
