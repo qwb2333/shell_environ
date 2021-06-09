@@ -36,24 +36,6 @@ set expandtab "tab设为空格
 set whichwrap=b,s,<,>,[,] "
 
 
-" 首先,mkdir ~/.vim/bundle
-" 然后git clone https://github.com/gmarik/Vundle.vim.git
-" 再添加下面这部分,在vim中输入:PluginInstall安装插件
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator' " config_gen.py用于生成.ycmextra_conf.py文件
-Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-scripts/indentpython.vim' " 用于python代码的自动缩进
-Plugin 'scrooloose/nerdtree' " 增强侧栏
-Plugin 'scrooloose/nerdcommenter' " leader+cc注释,leader+cu解除
-Plugin 'SirVer/ultisnips'
-Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-call vundle#end()
-
-
 let g:gitgutter_terminal_reports_focus=0
 let mapleader=";" "自定义前缀键
 
@@ -227,4 +209,3 @@ let g:airline_powerline_fonts = 1
  let g:airline#extensions#whitespace#enabled = 0
  let g:airline#extensions#whitespace#symbol = '!'
 
- colorscheme solarized
